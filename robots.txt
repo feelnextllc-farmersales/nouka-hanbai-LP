@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://feelnextllc-farmersales.github.io/nouka-hanbai-lp/sitemap.xml
