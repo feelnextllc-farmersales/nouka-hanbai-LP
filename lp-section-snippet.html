@@ -1,0 +1,82 @@
+<!--
+  lp-section-snippet.html
+  ─────────────────────────────────────────────
+  既存LP（index.html）の「For Farmers」セクションの直後に、
+  このブロックをそのまま貼り付けてください。
+
+  前提：
+  ・このスニペットは、LPの index.html がリポジトリの「ルート」に
+    置かれていることを想定しています（例: /index.html）。
+  ・リンク先は /app/denpyo/index.html と /app/ai/index.html です。
+    LPがルート以外（例: /lp/index.html）にある場合は、
+    href の相対パスを "app/denpyo/index.html" 等に調整してください。
+  ・フォント（Shippori Mincho / Zen Kaku Gothic New）は、
+    既存LPで既に読み込んでいれば追加不要です。読み込んでいない場合は
+    <head> 内に以下を追加してください：
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  ─────────────────────────────────────────────
+-->
+
+<section class="fs-tools-section">
+  <div class="fs-tools-inner">
+    <div class="fs-eyebrow">FOR FARMERS – DIGITAL TOOLS</div>
+    <h2 class="fs-heading">販売活動を、<br>データでも支えます。</h2>
+    <p class="fs-lead">登録農家さんには、日々の出荷管理と経営分析をサポートする2つのWebツールをご用意しています。</p>
+
+    <div class="fs-card-grid">
+      <div class="fs-card fs-card-free">
+        <span class="fs-tag">無料</span>
+        <h3>農家の伝票</h3>
+        <p>納品書作成・出荷管理を、スマホで30秒。</p>
+        <ul class="fs-dash-list">
+          <li>納品書PDFを自動作成、ワンタップで請求書に</li>
+          <li>販売先・品目・価格を記憶し、次回から候補表示</li>
+          <li>インボイス制度に対応したフォーマット</li>
+        </ul>
+        <a href="app/denpyo/index.html" class="fs-btn fs-btn-primary">無料で使ってみる</a>
+      </div>
+
+      <div class="fs-card fs-card-paid">
+        <span class="fs-tag">有料オプション</span>
+        <h3>農家の販売担当AI</h3>
+        <p>蓄積データをもとに、専属AIが経営相談に応じます。</p>
+        <ul class="fs-dash-list fs-dash-list-dark">
+          <li>今日の注文は？に即答</li>
+          <li>価格提案・返信文の作成</li>
+          <li>売上分析・販売提案</li>
+        </ul>
+        <a href="app/ai/index.html" class="fs-btn fs-btn-outline-gold">AIに相談してみる</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* このセクション専用のスタイル。既存LPのCSS変数名と衝突しないよう fs- 接頭辞を付けています。
+     色・フォントは既存LPからの抽出値に合わせています。 */
+  .fs-tools-section{ background:#F6F1E7; padding:64px 20px; }
+  .fs-tools-inner{ max-width:720px; margin:0 auto; }
+  .fs-eyebrow{ font-size:12px; font-weight:700; letter-spacing:2px; color:#B98A3A; text-transform:uppercase; margin-bottom:10px; font-family:'Zen Kaku Gothic New', sans-serif; }
+  .fs-heading{ font-family:'Shippori Mincho', serif; font-size:26px; line-height:1.6; font-weight:700; color:#23231E; margin:0 0 14px; }
+  .fs-lead{ font-family:'Zen Kaku Gothic New', sans-serif; font-size:14px; line-height:1.8; color:#6E6858; margin:0 0 32px; max-width:520px; }
+  .fs-card-grid{ display:grid; grid-template-columns:1fr; gap:20px; }
+  @media (min-width:720px){ .fs-card-grid{ grid-template-columns:1fr 1fr; } }
+  .fs-card{ border-radius:14px; padding:28px 26px; font-family:'Zen Kaku Gothic New', sans-serif; }
+  .fs-card-free{ background:#fff; border:1.5px solid #EDD9AF; }
+  .fs-card-paid{ background:#1D2B21; color:#F2EEE4; }
+  .fs-tag{ display:inline-block; font-size:11px; font-weight:800; padding:3px 10px; border-radius:20px; margin-bottom:12px; letter-spacing:1px; }
+  .fs-card-free .fs-tag{ background:#F3ECD8; color:#B98A3A; }
+  .fs-card-paid .fs-tag{ background:rgba(185,138,58,.18); color:#D8B573; }
+  .fs-card h3{ font-family:'Shippori Mincho', serif; font-size:20px; font-weight:700; margin:0 0 8px; }
+  .fs-card > p{ font-size:13.5px; line-height:1.6; margin:0 0 16px; opacity:.9; }
+  .fs-dash-list{ list-style:none; margin:0 0 22px; padding:0; }
+  .fs-dash-list li{ padding:10px 0; border-bottom:1px solid #EDD9AF; font-size:13px; }
+  .fs-dash-list li::before{ content:"― "; color:#B98A3A; font-weight:700; }
+  .fs-dash-list-dark li{ border-bottom:1px dashed rgba(185,138,58,.4); color:#F2EEE4; }
+  .fs-btn{ display:inline-flex; align-items:center; justify-content:center; width:100%; padding:15px; border-radius:8px; font-weight:700; font-size:14.5px; text-decoration:none; box-sizing:border-box; }
+  .fs-btn-primary{ background:#B98A3A; color:#2A2013; }
+  .fs-btn-outline-gold{ background:transparent; color:#B98A3A; border:1.5px solid #B98A3A; }
+</style>
