@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>農家の販売担当AI｜農家の販売担当</title>
+<meta name="description" content="蓄積した販売データをもとに、専属AIが価格相談・売上分析・販売提案に応じます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/design-system.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-shell" id="app">
+
+  <!-- ログイン -->
+  <div class="screen active" id="screen-login">
+    <div class="login-hero">
+      <div class="brand-mark">AI</div>
+      <h1>農家の販売担当AI</h1>
+      <p>あなた専属のAI販売担当。</p>
+    </div>
+    <div class="field"><label>メールアドレス</label><input type="email" id="loginEmail" placeholder="you@example.com"></div>
+    <div class="field"><label>パスワード</label><input type="password" id="loginPassword" placeholder="••••••••"></div>
+    <button class="btn btn-primary btn-xl" id="loginBtn">ログイン</button>
+    <p style="font-size:11px; color:var(--ink-faint); text-align:center; margin-top:10px;">「農家の伝票」と同じアカウントでご利用いただけます</p>
+    <a href="../denpyo/index.html" class="btn btn-ghost btn-lg" style="text-decoration:none;">農家の伝票を使う</a>
+    <a href="../../index.html" class="btn btn-ghost btn-lg" style="text-decoration:none;">← LPに戻る</a>
+  </div>
+
+  <!-- 有料オプション案内 -->
+  <div class="screen" id="screen-ai-intro">
+    <div class="topbar"><a href="../../index.html" class="back-btn"><svg class="icon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></a><h2>農家の販売担当AI</h2></div>
+    <div class="ai-hero-icon"><svg class="icon" style="stroke:#fff; width:24px; height:24px;" viewBox="0 0 24 24"><path d="M12 3l1.6 4.7L18 9l-4.4 1.3L12 15l-1.6-4.7L6 9l4.4-1.3L12 3Z"/></svg></div>
+    <div class="ai-intro-heading">蓄積したデータが、<br>そのまま相談相手になる。</div>
+    <ul class="dash-list check">
+      <li>今日の注文は？に即答</li>
+      <li>この価格で売っていいか相談できる</li>
+      <li>売上・販売分析をAIが解説</li>
+      <li>販売先への返信文を作成できる</li>
+      <li>売上改善の提案を受けられる</li>
+    </ul>
+    <div class="price-card"><div class="p-num">月額 ¥2,980（税抜）</div><div class="p-sub">「農家の伝票」をお使いの方はいつでも追加できます</div></div>
+    <button class="btn btn-primary btn-xl" id="subscribeAiBtn">申し込んで使ってみる</button>
+  </div>
+
+  <!-- AIチャット（ホーム） -->
+  <div class="screen" id="screen-chat">
+    <div class="topbar"><h2><span class="status-dot"></span>農家の販売担当AI</h2></div>
+    <div class="data-source-badge" id="dataSourceBadge"><span class="dot"></span><span id="dataSourceText">データ確認中…</span></div>
+    <div class="chat-scroll" id="chatScroll"></div>
+    <div class="quick-row" id="quickRow"></div>
+    <div class="chat-input-bar">
+      <button class="chat-icon-btn mic" data-toast="音声での相談は準備中です"><svg class="icon" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg></button>
+      <input type="text" id="chatInput" placeholder="質問を入力…">
+      <button class="chat-icon-btn send" id="sendChatBtn"><svg class="icon" style="stroke:#fff" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+    <div class="mic-note">将来的には音声だけで相談・納品書作成にも対応予定です</div>
+  </div>
+
+  <!-- 価格相談 -->
+  <div class="screen" id="screen-price">
+    <div class="topbar"><button class="back-btn" data-go="screen-chat"><svg class="icon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button><h2>価格相談</h2></div>
+    <div class="subtitle">商品と希望価格を入力すると、蓄積データから相場感を判定します</div>
+    <div class="field"><label>商品</label><input id="priceItemInput" value="きゅうり"></div>
+    <div class="field"><label>希望単価（円／キロ）</label><input id="priceValueInput" type="number" value="260"></div>
+    <button class="btn btn-primary btn-lg" id="judgePriceBtn">この価格を相談する</button>
+    <div id="priceResult"></div>
+  </div>
+
+  <!-- 販売分析 -->
+  <div class="screen" id="screen-analysis">
+    <div class="topbar"><button class="back-btn" data-go="screen-chat"><svg class="icon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button><h2>販売分析</h2></div>
+    <div id="analysisBody"></div>
+  </div>
+
+  <!-- 販売提案 -->
+  <div class="screen" id="screen-proposals">
+    <div class="topbar"><button class="back-btn" data-go="screen-chat"><svg class="icon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button><h2>販売提案</h2></div>
+    <div id="proposalsList"></div>
+  </div>
+
+  <!-- 通知 -->
+  <div class="screen" id="screen-notifications">
+    <div class="topbar"><button class="back-btn" data-go="screen-chat"><svg class="icon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button><h2>通知</h2></div>
+    <div id="notifList"></div>
+  </div>
+
+  <div class="bottom-nav" id="bottomNav">
+    <button data-group="chat" data-go="screen-chat"><svg class="icon" viewBox="0 0 24 24"><path d="M4 5h16v10H8l-4 4V5Z"/></svg>チャット</button>
+    <button data-group="price" data-go="screen-price"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 7l4 6 4-6M8 13h8M8 16h8M12 13v6"/></svg>価格相談</button>
+    <button data-group="analysis" data-go="screen-analysis"><svg class="icon" viewBox="0 0 24 24"><path d="M4 20V11M11 20V4M18 20v-7"/></svg>分析</button>
+    <button data-group="proposals" data-go="screen-proposals"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l1.6 4.7L18 9l-4.4 1.3L12 15l-1.6-4.7L6 9l4.4-1.3L12 3Z"/></svg>提案</button>
+    <button data-group="notif" data-go="screen-notifications"><svg class="icon" viewBox="0 0 24 24"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5H4.5S6 14 6 10Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>通知</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
