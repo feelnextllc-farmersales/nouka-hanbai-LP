@@ -1034,6 +1034,76 @@
     </div>
   </section>
 
+  <!-- FARM TOOLS: 農家の伝票 / 農家の販売担当AI -->
+  <section id="farm-tools">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">For Farmers – Digital Tools</span>
+        <h2>販売活動を、<br>データでも支えます。</h2>
+        <p>登録農家さんには、日々の出荷管理と経営分析をサポートする2つのWebツールをご用意しています。</p>
+      </div>
+
+      <div class="tools-grid">
+        <div class="tools-card reveal">
+          <span class="reg-badge">無料</span>
+          <h3>農家の伝票</h3>
+          <p class="reg-lead">伝票づくりを、できるだけ簡単に。</p>
+          <p class="reg-desc">
+            見積書・納品書・請求書・領収書の作成から、顧客管理・商品管理まで。使うほど販売先や単価を覚えていく、学習型の伝票アプリです。
+          </p>
+          <ul class="reg-list">
+            <li>納品書からワンタップで請求書を作成</li>
+            <li>販売先・商品・価格を記憶し、次回から候補表示</li>
+            <li>インボイス制度に対応したフォーマット</li>
+          </ul>
+          <a href="app/denpyo/index.html" class="btn-primary tools-cta">農家の伝票を詳しく見る</a>
+        </div>
+
+        <div class="tools-card tools-card--dark reveal reveal-delay-1">
+          <span class="reg-badge tools-badge--dark">有料オプション</span>
+          <h3>農家の販売担当AI</h3>
+          <p class="reg-lead">あなた専属の、AI販売担当。</p>
+          <p class="reg-desc">
+            農家の伝票に蓄積されたデータをもとに、価格相談や売上分析、販売提案まで。専属の販売担当に相談する感覚でお使いいただけます。
+          </p>
+          <ul class="reg-list">
+            <li>今日の注文は？に即答</li>
+            <li>価格相談・売上分析・販売提案</li>
+            <li>将来的には音声での相談にも対応予定</li>
+          </ul>
+          <a href="app/ai/index.html" class="btn-primary tools-cta">農家の販売担当AIを詳しく見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* FARM TOOLS セクション専用の追加スタイル（:root の既存デザイントークンをそのまま使用しています） */
+    #farm-tools{ background:var(--off-white); }
+    .tools-grid{ display:grid; grid-template-columns:1fr 1fr; gap:44px; margin-top:8px; }
+    .tools-card{
+      background:var(--off-white); border:1px solid var(--line); border-top:3px solid var(--gold);
+      border-radius:2px; padding:44px 38px;
+    }
+    .tools-card h3{ margin-top:20px; font-size:clamp(22px,3vw,28px); color:var(--green-deep); line-height:1.5; }
+    .tools-card .reg-lead{ margin-top:8px; }
+    .tools-card .reg-desc{ max-width:none; }
+    .tools-card .reg-list{ margin-top:26px; margin-bottom:8px; }
+    .tools-cta{ display:inline-block; margin-top:28px; }
+    .tools-card--dark{ background:var(--green-deep); border-top-color:var(--gold); }
+    .tools-card--dark h3{ color:#fff; }
+    .tools-card--dark .reg-lead{ color:var(--gold-light); }
+    .tools-card--dark .reg-desc{ color:rgba(250,247,241,.78); }
+    .tools-card--dark .reg-list li{ color:rgba(250,247,241,.9); }
+    .tools-card--dark .reg-list li::before{ color:var(--gold-light); }
+    .tools-badge--dark{ border-color:var(--gold-light); color:var(--gold-light); }
+    @media (max-width:880px){
+      .tools-grid{ grid-template-columns:1fr; gap:28px; }
+      .tools-card{ padding:36px 26px; }
+    }
+  </style>
+
+
   <!-- SERVICE: COMPANY (network service) -->
   <section class="tight" id="company-service" style="background:var(--ivory);">
     <div class="wrap">
